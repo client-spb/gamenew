@@ -222,7 +222,7 @@ const THEMES = {};
     'E5 _ _ _ D5 C5  B4 _ A4 _ _ _  A4 _ D5 _ F5 _  E5 _ _ _ . .  ' +
     'E5 _ F5 E5 D5 _  G#4 _ B4 _ D5 _  C5 _ B4 _ A4 _  A4 _ _ _ . .  ' +
     'D5 _ E5 _ F5 _  A5 _ _ _ G5 F5  E5 _ C5 _ A4 _  E5 _ _ _ . .  ' +
-    'D5 _ C5 _ B4 _  G#4 _ A4 _ B4 _  C5 _ B4 _ G#4 _  A4 _ _ _ . .', 2);
+    'D5 _ C5 _ B4 _  G#4 _ A4 _ B4 _  C5 _ B4 _ G#4 _  A4 _ _ _ . .', 1);
   const ch = ['Am', 'Am', 'Dm', 'Am', 'Dm', 'E7', 'Am', 'Am', 'Dm', 'Dm', 'Am', 'Am', 'Dm', 'E7', 'E7', 'Am'];
   THEMES.dvor = {
     bpm: 132, stepsPerBeat: 2, len: 16 * 6,

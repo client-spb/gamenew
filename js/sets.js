@@ -585,7 +585,7 @@ const YARD = {
   plan(viewScale) {
     const need = viewScale * DPR * 1.35;
     const area = WORLD.w * (WORLD.bottom - WORLD.top);
-    const maxPx = (GFX.quality ? 12e6 : 6e6);
+    const maxPx = !GFX.quality ? 6e6 : GFX.grain ? 12e6 : 8e6;
     this.res = clamp(Math.min(need, 1.45, Math.sqrt(maxPx / area)), 0.35, 1.45);
     this.cw = Math.floor(1000 / this.res);
   },
