@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>В мире скуфов — мультфильм</title>
+<meta name="description" content="Мультфильм кодом про скуфа Гену, бабок у подъезда и гопников. С озвучкой, музыкой и сюрпризом посередине.">
+<meta name="theme-color" content="#1b2433">
+<link rel="icon" type="image/png" href="img/icon.png">
+<link rel="apple-touch-icon" href="img/icon-512.png">
+<meta property="og:title" content="В мире скуфов — мультфильм">
+<meta property="og:description" content="Скуф Гена, бабки у подъезда и гопники с хардбасом. В середине мультик ломается, и ты им управляешь.">
+<meta property="og:image" content="img/poster.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&family=PT+Sans+Narrow:wght@400;700&family=Neucha&display=swap">
+<script src="https://st.max.ru/js/max-web-app.js"></script>
+<script src="/static/games/max-games-sdk.js?v=2"></script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ======== SVG-спрайт иконок ======== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="gEnamel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#dfe7f2"/>
+    </linearGradient>
+    <linearGradient id="gGold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe9a3"/><stop offset=".55" stop-color="#f2b632"/><stop offset="1" stop-color="#b97a12"/>
+    </linearGradient>
+    <linearGradient id="gRed" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff7a64"/><stop offset="1" stop-color="#c22d1f"/>
+    </linearGradient>
+    <filter id="fShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="1.2" stdDeviation="0.8" flood-color="#000" flood-opacity=".45"/>
+    </filter>
+  </defs>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.6v14.8c0 .9 1 1.4 1.7.9l11-7.4c.7-.5.7-1.4 0-1.8l-11-7.4C8 3.2 7 3.7 7 4.6z" fill="url(#gEnamel)" filter="url(#fShadow)"/><path d="M8.6 6.4l8.6 5.6" stroke="#fff" stroke-width="1.2" stroke-linecap="round" opacity=".7"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><rect x="5.5" y="4" width="4.6" height="16" rx="1.4" fill="url(#gEnamel)" filter="url(#fShadow)"/><rect x="13.9" y="4" width="4.6" height="16" rx="1.4" fill="url(#gEnamel)" filter="url(#fShadow)"/><path d="M7 6v6M15.4 6v6" stroke="#fff" stroke-width="1" stroke-linecap="round" opacity=".8"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M12.5 5.5L5 12l7.5 6.5V5.5z" fill="url(#gEnamel)" filter="url(#fShadow)"/><path d="M20 5.5L12.5 12 20 18.5V5.5z" fill="url(#gEnamel)" filter="url(#fShadow)"/></symbol>
+  <symbol id="i-fwd" viewBox="0 0 24 24"><path d="M11.5 5.5L19 12l-7.5 6.5V5.5z" fill="url(#gEnamel)" filter="url(#fShadow)"/><path d="M4 5.5L11.5 12 4 18.5V5.5z" fill="url(#gEnamel)" filter="url(#fShadow)"/></symbol>
+  <symbol id="i-sound" viewBox="0 0 24 24"><path d="M3.5 9.2h3.6L12 4.8v14.4l-4.9-4.4H3.5z" fill="url(#gEnamel)" filter="url(#fShadow)"/><path d="M15 8.6c1.2 1 1.8 2.1 1.8 3.4s-.6 2.4-1.8 3.4M17.6 6c2 1.6 3 3.6 3 6s-1 4.4-3 6" stroke="#fff" stroke-width="1.9" fill="none" stroke-linecap="round" filter="url(#fShadow)"/></symbol>
+  <symbol id="i-mute" viewBox="0 0 24 24"><path d="M3.5 9.2h3.6L12 4.8v14.4l-4.9-4.4H3.5z" fill="url(#gEnamel)" filter="url(#fShadow)"/><path d="M15.5 9l5 6M20.5 9l-5 6" stroke="url(#gRed)" stroke-width="2.4" stroke-linecap="round" filter="url(#fShadow)"/></symbol>
+  <symbol id="i-cc" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="3" fill="url(#gEnamel)" filter="url(#fShadow)"/><path d="M10.2 10.2c-.5-.6-1.1-.8-1.8-.8-1.3 0-2.2 1.1-2.2 2.6s.9 2.6 2.2 2.6c.7 0 1.3-.3 1.8-.8M17.3 10.2c-.5-.6-1.1-.8-1.8-.8-1.3 0-2.2 1.1-2.2 2.6s.9 2.6 2.2 2.6c.7 0 1.3-.3 1.8-.8" stroke="#1d3d6e" stroke-width="1.7" fill="none" stroke-linecap="round"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3.2 11.2L12 3.8l8.8 7.4" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#fShadow)"/><path d="M5.5 10.5V20h4.8v-5.2h3.4V20h4.8v-9.5L12 5.2z" fill="url(#gEnamel)" filter="url(#fShadow)"/><rect x="14.5" y="4.5" width="2.4" height="4" fill="#fff"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5.5" r="3" fill="url(#gGold)" filter="url(#fShadow)"/><circle cx="6" cy="12" r="3" fill="url(#gGold)" filter="url(#fShadow)"/><circle cx="18" cy="18.5" r="3" fill="url(#gGold)" filter="url(#fShadow)"/><path d="M8.6 10.6l6.8-3.7M8.6 13.4l6.8 3.7" stroke="#fff" stroke-width="1.8" filter="url(#fShadow)"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2.8l7.6 3v5.6c0 4.8-3.2 8.4-7.6 9.9-4.4-1.5-7.6-5.1-7.6-9.9V5.8z" fill="url(#gEnamel)" filter="url(#fShadow)"/><path d="M8.4 12.2l2.5 2.5 4.8-5" stroke="#1d7a3c" stroke-width="2.1" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-restart" viewBox="0 0 24 24"><path d="M19.2 12a7.2 7.2 0 1 1-2.1-5.1" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" filter="url(#fShadow)"/><path d="M19.8 3.6v5.6h-5.6z" fill="url(#gEnamel)" filter="url(#fShadow)"/></symbol>
+  <symbol id="i-full" viewBox="0 0 24 24"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#fShadow)"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><g transform="rotate(90 12 12)"><rect x="7" y="2.5" width="10" height="19" rx="2.2" fill="url(#gEnamel)" filter="url(#fShadow)"/><rect x="8.4" y="5" width="7.2" height="12.6" rx=".6" fill="#2a5aa0"/><circle cx="12" cy="19.4" r=".9" fill="#2a5aa0"/></g></symbol>
+  <symbol id="i-headphones" viewBox="0 0 24 24"><path d="M4 15v-3a8 8 0 0 1 16 0v3" stroke="#fff" stroke-width="2.2" fill="none" filter="url(#fShadow)"/><rect x="3" y="13.5" width="4.6" height="7" rx="1.6" fill="url(#gGold)" filter="url(#fShadow)"/><rect x="16.4" y="13.5" width="4.6" height="7" rx="1.6" fill="url(#gGold)" filter="url(#fShadow)"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24"><path d="M9 11V4.6a1.6 1.6 0 0 1 3.2 0V10m0-1.2V3.6a1.6 1.6 0 0 1 3.2 0v5.6m0-.6V5a1.6 1.6 0 0 1 3.2 0v8.4c0 4.4-2.8 7.6-7 7.6-2.6 0-4.2-1-5.8-3.2L3.4 14a1.7 1.7 0 0 1 2.6-2.1L9 14" fill="url(#gEnamel)" stroke="#1d3d6e" stroke-width="1.3" stroke-linejoin="round" filter="url(#fShadow)"/></symbol>
+  <symbol id="i-gravity" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4" fill="url(#gGold)" filter="url(#fShadow)"/><path d="M12 12.5v8M8.5 17l3.5 3.5 3.5-3.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#fShadow)"/></symbol>
+  <symbol id="i-hair" viewBox="0 0 24 24"><path d="M5 15c0-6 3-10 7-10s7 4 7 10c-1.6-2.2-3-3-4.6-3.2.4 1 .4 2 0 3-1-1.6-2.6-2.6-4.6-2.8.3 1 .2 1.9-.4 2.8C8 13.6 6.6 14 5 15z" fill="url(#gGold)" filter="url(#fShadow)"/><path d="M7 16.5c.6 3 2.6 4.6 5 4.6s4.4-1.6 5-4.6" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round"/></symbol>
+  <symbol id="i-belly" viewBox="0 0 24 24"><path d="M7 3.5c-1 2.6-1.5 5-1.5 7.5 0 5.4 3 9.5 6.5 9.5s6.5-4.1 6.5-9.5c0-2.5-.5-4.9-1.5-7.5" fill="url(#gEnamel)" stroke="#fff" stroke-width="1.2" filter="url(#fShadow)"/><circle cx="12" cy="13.5" r="1.2" fill="#b0705a"/><path d="M8 7h8" stroke="#c22d1f" stroke-width="1.6"/></symbol>
+  <symbol id="i-head" viewBox="0 0 24 24"><circle cx="12" cy="10" r="8" fill="url(#gGold)" filter="url(#fShadow)"/><circle cx="9" cy="9" r="1.4" fill="#2b1d16"/><circle cx="15" cy="9" r="1.4" fill="#2b1d16"/><path d="M8.6 13c1 1.6 5.8 1.6 6.8 0" stroke="#2b1d16" stroke-width="1.5" fill="none" stroke-linecap="round"/><rect x="10" y="18" width="4" height="4" fill="#fff"/></symbol>
+  <symbol id="i-disco" viewBox="0 0 24 24"><circle cx="12" cy="13" r="7.6" fill="url(#gEnamel)" filter="url(#fShadow)"/><path d="M4.6 11h14.8M5 15h14M8 7.4c1 3.6 1 7.6 0 11.4M12 5.4v15.2M16 7.4c-1 3.6-1 7.6 0 11.4" stroke="#7c93b3" stroke-width=".9" fill="none"/><path d="M12 2v3.4" stroke="#fff" stroke-width="1.6"/><path d="M9.5 9.5l2-1.2" stroke="#ffe680" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M15.5 3.5a8.6 8.6 0 1 0 5 13.6A7.2 7.2 0 0 1 15.5 3.5z" fill="url(#gGold)" filter="url(#fShadow)"/><circle cx="10" cy="11" r="1.2" fill="#c98f1e"/><circle cx="13" cy="16" r=".9" fill="#c98f1e"/></symbol>
+  <symbol id="i-snow" viewBox="0 0 24 24"><g stroke="#fff" stroke-width="2" stroke-linecap="round" filter="url(#fShadow)"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"/><path d="M9.6 4.8L12 6.8l2.4-2M9.6 19.2l2.4-2 2.4 2" fill="none"/></g></symbol>
+  <symbol id="i-bird" viewBox="0 0 24 24"><path d="M3 14c2.2-.4 3.8-1.6 5-3.4 1-1.6 2.6-2.6 4.6-2.6 1.6 0 2.8.8 3.4 2h3.6l-2.4 1.6c.2 3.6-2.6 6.4-6.6 6.4-3 0-5.6-1.4-7.6-4z" fill="url(#gEnamel)" filter="url(#fShadow)"/><path d="M8.4 12.4c1.8.2 3.6-.6 5-2.4" stroke="#7c93b3" stroke-width="1.4" fill="none"/><circle cx="15.6" cy="10" r=".9" fill="#c22d1f"/></symbol>
+  <symbol id="i-giant" viewBox="0 0 24 24"><path d="M4 20V9.5L8 6v14M10 20V4l5 3v13M17 20v-8l3 1.4V20z" fill="url(#gEnamel)" filter="url(#fShadow)"/><path d="M2 20.6h20" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-wire" viewBox="0 0 24 24"><g stroke="#7dffa8" stroke-width="1.7" fill="none" stroke-linejoin="round" filter="url(#fShadow)"><path d="M12 3l8 4.6v8.8L12 21l-8-4.6V7.6z"/><path d="M12 12l8-4.4M12 12L4 7.6M12 12v9"/></g></symbol>
+  <symbol id="i-next" viewBox="0 0 24 24"><path d="M5 5l9 7-9 7zM14 5l7 7-7 7" fill="url(#gGold)" filter="url(#fShadow)"/></symbol>
+  <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 3.2l9.4 16.4H2.6z" fill="url(#gGold)" filter="url(#fShadow)"/><path d="M12 9.4v5" stroke="#3a2306" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="17.2" r="1.2" fill="#3a2306"/></symbol>
+  <symbol id="i-err" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.6" fill="url(#gRed)" filter="url(#fShadow)"/><path d="M8.2 8.2l7.6 7.6M15.8 8.2l-7.6 7.6" stroke="#fff" stroke-width="2.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-film" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2" fill="url(#gEnamel)" filter="url(#fShadow)"/><g fill="#1d3d6e"><rect x="4.4" y="5.6" width="2" height="2" rx=".4"/><rect x="4.4" y="11" width="2" height="2" rx=".4"/><rect x="4.4" y="16.4" width="2" height="2" rx=".4"/><rect x="17.6" y="5.6" width="2" height="2" rx=".4"/><rect x="17.6" y="11" width="2" height="2" rx=".4"/><rect x="17.6" y="16.4" width="2" height="2" rx=".4"/></g><path d="M10 9v6l5-3z" fill="#c22d1f"/></symbol>
+</svg>
+
+<div id="app">
+
+  <!-- ===== Экран-заставка ===== -->
+  <section class="screen" id="scr-menu">
+    <canvas id="menuCanvas"></canvas>
+    <div id="menuIn">
+      <div class="m-top">
+        <div class="tv-badge"><span class="tv-dot"></span>Документальный мультфильм</div>
+      </div>
+      <div class="m-title">
+        <div class="t-small">Программа</div>
+        <h1 class="t-big"><span>В мире</span><b>скуфов</b></h1>
+        <div class="t-sub">серия первая: «Пиво и честь»</div>
+      </div>
+      <div class="m-actions">
+        <button class="plate plate-main" id="btnWatch"><svg><use href="#i-play"/></svg><span id="btnWatchTxt">Смотреть</span></button>
+        <button class="plate plate-small" id="btnResume" style="display:none"><svg><use href="#i-restart"/></svg><span>С начала</span></button>
+      </div>
+      <div class="m-tips">
+        <div class="tip"><svg><use href="#i-headphones"/></svg><span>Со звуком — смешнее</span></div>
+        <div class="tip"><svg><use href="#i-phone"/></svg><span>Лучше горизонтально</span></div>
+        <div class="tip"><svg><use href="#i-hand"/></svg><span>В середине — сюрприз</span></div>
+      </div>
+      <div class="m-bottom">
+        <button class="slip" id="btnMenuSound"><svg><use href="#i-sound"/></svg><span>Звук</span></button>
+        <button class="slip" id="btnMenuSubs"><svg><use href="#i-cc"/></svg><span>Субтитры</span></button>
+        <button class="slip" id="btnMenuShare"><svg><use href="#i-share"/></svg><span>Поделиться</span></button>
+        <button class="slip" id="btnPrivacy"><svg><use href="#i-shield"/></svg><span>Конфиденциальность</span></button>
+      </div>
+      <div class="loadbar" id="loadbar"><i id="loadfill"></i><span id="loadtxt">Загрузка озвучки…</span></div>
+    </div>
+  </section>
+
+  <!-- ===== Плеер ===== -->
+  <section class="screen" id="scr-film">
+    <canvas id="cv"></canvas>
+    <div id="subs"><div class="sub-in"><b id="subWho"></b><span id="subTxt"></span></div></div>
+    <div id="chapterCard"><small id="chapNum"></small><span id="chapName"></span></div>
+    <div id="tapLayer"></div>
+
+    <!-- пульт управления миром (фича в середине) -->
+    <div id="console">
+      <div class="con-head"><svg><use href="#i-wire"/></svg><span>skuf.exe · хватай персонажей пальцем и бросай</span><em id="conTimer"></em>
+        <button class="con-next" id="btnContinue"><span>Дальше мультик</span><svg><use href="#i-next"/></svg></button></div>
+      <div class="con-grid" id="conGrid"></div>
+    </div>
+
+    <div id="controls">
+      <div class="ctl-top">
+        <span class="time" id="tCur">0:00</span>
+        <div class="bar" id="bar"><div class="bar-buf"></div><div class="bar-fill" id="barFill"></div><div class="bar-marks" id="barMarks"></div><div class="bar-knob" id="barKnob"></div></div>
+        <span class="time" id="tDur">0:00</span>
+      </div>
+      <div class="ctl-row">
+        <button class="cbtn" id="cMenu" aria-label="В меню"><svg><use href="#i-menu"/></svg></button>
+        <button class="cbtn" id="cBack" aria-label="Назад 10 секунд"><svg><use href="#i-back"/></svg></button>
+        <button class="cbtn cbtn-big" id="cPlay" aria-label="Пауза"><svg><use id="cPlayIco" href="#i-pause"/></svg></button>
+        <button class="cbtn" id="cFwd" aria-label="Вперёд 10 секунд"><svg><use href="#i-fwd"/></svg></button>
+        <button class="cbtn" id="cSubs" aria-label="Субтитры"><svg><use href="#i-cc"/></svg></button>
+        <button class="cbtn" id="cSound" aria-label="Звук"><svg><use id="cSoundIco" href="#i-sound"/></svg></button>
+        <button class="cbtn" id="cFull" aria-label="Во весь экран"><svg><use href="#i-full"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Пауза ===== -->
+  <div class="overlay" id="ov-pause">
+    <div class="panel notice">
+      <div class="pin"></div>
+      <div class="n-head">ОБЪЯВЛЕНИЕ</div>
+      <div class="n-text">Мультфильм на паузе.<br>Бабушки ждут. Скуф — тоже.</div>
+      <div class="n-btns">
+        <button class="plate" id="pResume"><svg><use href="#i-play"/></svg><span>Продолжить</span></button>
+        <button class="plate plate-alt" id="pRestart"><svg><use href="#i-restart"/></svg><span>Заново</span></button>
+        <button class="plate plate-alt" id="pMenu"><svg><use href="#i-menu"/></svg><span>В меню</span></button>
+      </div>
+      <div class="n-row">
+        <button class="slip" id="pSound"><svg><use href="#i-sound"/></svg><span>Звук</span></button>
+        <button class="slip" id="pSubs"><svg><use href="#i-cc"/></svg><span>Субтитры</span></button>
+      </div>
+      <div class="tabs"><i>двор</i><i>скуф</i><i>пиво</i><i>бабки</i><i>семки</i><i>хардбас</i></div>
+    </div>
+  </div>
+
+  <!-- ===== Конец ===== -->
+  <div class="overlay" id="ov-end">
+    <div class="panel ticket">
+      <div class="tk-head"><svg><use href="#i-film"/></svg><span>КОНЕЦ ПЕРВОЙ СЕРИИ</span></div>
+      <div class="tk-body">
+        <div class="tk-line"><span>Фильм</span><b>«В мире скуфов»</b></div>
+        <div class="tk-line"><span>Режиссёр второй половины</span><b id="endDirector">Ты</b></div>
+        <div class="tk-line"><span>Твоя причёска для Гены</span><b id="endHair">лысина</b></div>
+        <div class="tk-line"><span>Брошено бабушек</span><b id="endThrows">0</b></div>
+        <div class="tk-line"><span>Просмотров</span><b id="endViews">1</b></div>
+      </div>
+      <div class="tk-perf"></div>
+      <div class="tk-btns">
+        <button class="plate" id="eShare"><svg><use href="#i-share"/></svg><span>Поделиться</span></button>
+        <button class="plate plate-alt" id="eAgain"><svg><use href="#i-restart"/></svg><span>Ещё раз</span></button>
+        <button class="plate plate-alt" id="eMenu"><svg><use href="#i-menu"/></svg><span>В меню</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Подтверждение ===== -->
+  <div class="overlay" id="ov-confirm">
+    <div class="panel notice small">
+      <div class="pin"></div>
+      <div class="n-head" id="cfTitle">Точно?</div>
+      <div class="n-text" id="cfText">Начать мультфильм заново?</div>
+      <div class="n-btns two">
+        <button class="plate" id="cfYes"><span>Да</span></button>
+        <button class="plate plate-alt" id="cfNo"><span>Нет</span></button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+</div>
+
+<script src="js/voice-meta.js"></script>
+<script src="js/util.js"></script>
+<script src="js/platform.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/music.js"></script>
+<script src="js/gfx.js"></script>
+<script src="js/characters.js"></script>
+<script src="js/props.js"></script>
+<script src="js/sets.js"></script>
+<script src="js/effects.js"></script>
+<script src="js/screenplay.js"></script>
+<script src="js/director.js"></script>
+<script src="js/feature.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
